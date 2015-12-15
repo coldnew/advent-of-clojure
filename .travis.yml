@@ -1,0 +1,17 @@
+language: clojure
+sudo: false
+env:
+  global:
+  - GH_REF: github.com/coldnew/advent-of-clojure.git
+  - secure: oRZlGjsbeIqAfCAj+Ht6/Hj91ywA21v0fUZ8tTW7BBUb2qYkLgymncfK7Dz2CQqk/C10gVR7YdlZbEtXgZgFh08GULmI1f5iicSNZTwOlLX883YCNp3wIWG5Zh0naF7a/z9mIxj/FAFF+MSZ2MyLRlgVvNraI0Yecu3ERpBkhzGSNxXVxuFJEPYi61dawJbSN30Qmi1ZPgI9SKxGPJXwhtnQOneKSc05XC+m3CmwWfXXIaNEQiTG6qU/YSNlM7wcZhkoAU/bqVOg2thWpCypQVM9eKSTZKJez2jmagaPhxBPGBndTcCb47LyNt+YPFqELOrQ2C6SwINLl96LXg4jP46x2rJ1A0sLlEXCOLRce4TvmlS0BEn8CSHlcWOFG1bC9HByWm+odYPJYyZBn+68ickSkYjTZ3z7qIgHvkPBxtNxVTcwZvHPNWDv9/13w2fzrR0vEubkkKUKl1gK5WxSH52q5OAXPcidDgaAvsznEu8Ch9/NHVMvPD4MT4vnSLMlDJGGi98JSL36agmQeavrFu8otoBZyD5Qk3VGoRhift2AMccxWuX/VDs7eAuLEG8geENN9p13j9oncHJCrNKxlepPzA4tdbbMQgIMq0DFhLOWSBD7WVnjm3HD4hCYi/o/U2KH7jWLi+fbKCo8VSrvTMVfwGa+EG5ZpPav3fz+UW0=
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+before_install:
+  - mkdir ~/bin
+  - wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -P ~/bin/
+  - chmod a+x ~/bin/lein
+lein: ~/bin/lein
+script:
+  - lein marg
+  - ./deploy.sh
