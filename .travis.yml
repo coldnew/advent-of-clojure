@@ -13,5 +13,6 @@ before_install:
   - chmod a+x ~/bin/lein
 lein: ~/bin/lein
 script:
+  - lein spec
   - lein marg
   - ./deploy.sh

@@ -25,9 +25,12 @@
 ;; To what floor do the instructions take Santa?
 
 ;; input file save to resource/day01.txt
-(def input
-  (clojure.string/trim (slurp (clojure.java.io/resource "day01.txt"))))
+(def data
+  (slurp (clojure.java.io/resource "day01.txt")))
 
 ;; count the result
-(count
- (reduce + (map { \( 1 \) -1 } input)))
+(defn solve [input]
+  (reduce + (map { \( 1 \) -1 } input)))
+
+;; solve this problem
+(solve data)
