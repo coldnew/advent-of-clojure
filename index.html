@@ -2866,7 +2866,7 @@ net.brehaut.ClojureTools = (function (SH) {
   };
 })(SyntaxHighlighter);
 </script><title>advent -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://github.com/coldnew/advent-of-clojure">advent</a></h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>My solutions to the Advent of Code</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#advent.core">advent.core</a></li><li><a href="#advent.day01">advent.day01</a></li><li><a href="#advent.day02">advent.day02</a></li><li><a href="#advent.day03">advent.day03</a></li><li><a href="#advent.day05">advent.day05</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.core" name="advent.core"><h1 class="project-name">advent.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#advent.core">advent.core</a></li><li><a href="#advent.day01">advent.day01</a></li><li><a href="#advent.day02">advent.day02</a></li><li><a href="#advent.day03">advent.day03</a></li><li><a href="#advent.day04">advent.day04</a></li><li><a href="#advent.day05">advent.day05</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.core" name="advent.core"><h1 class="project-name">advent.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.core)</pre></td></tr><tr><td class="docs"><p>I don't do a whole lot.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn foo
   [x]
@@ -3032,7 +3032,41 @@ and Robo-Santa going the other.</p>
     (if (odd? result)
       result
       (inc result))))</pre></td></tr><tr><td class="docs"><p>part2 result</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day05" name="advent.day05"><h1 class="project-name">advent.day05</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day04" name="advent.day04"><h1 class="project-name">advent.day04</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(ns advent.day04
+  (:import [java.security.MessageDigest]))</pre></td></tr><tr><td class="docs"><p>--- Day 4: The Ideal Stocking Stuffer ---</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Santa needs help mining some AdventCoins (very similar to bitcoins) to use as
+gifts for all the economically forward-thinking little girls and boys.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>To do this, he needs to find MD5 hashes which, in hexadecimal, start with at
+least five zeroes. The input to the MD5 hash is some secret key (your puzzle
+input, given below) followed by a number in decimal. To mine AdventCoins, you
+must find Santa the lowest positive number (no leading zeroes: 1, 2, 3, ...)
+that produces such a hash.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>If your secret key is abcdef, the answer is 609043, because the MD5 hash of
+abcdef609043 starts with five zeroes (000001dbbfa...), and it is the lowest
+such number to do so.</p>
+
+<p>If your secret key is pqrstuv, the lowest number it combines with to make an
+MD5 hash starting with five zeroes is 1048970; that is, the MD5 hash of
+pqrstuv1048970 looks like 000006136ef....</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Your puzzle input is ckczppom.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>the puzzle input</p>
+</td><td class="codes"><pre class="brush: clojure">(def data &quot;ckczppom&quot;)</pre></td></tr><tr><td class="docs"><p>method to calculate md5</p>
+</td><td class="codes"><pre class="brush: clojure">(defn md5 [s]
+  (-&gt;&gt; (.getBytes s)
+       (.digest (java.security.MessageDigest/getInstance &quot;MD5&quot;))
+       (map #(format &quot;%02x&quot; %))
+       (apply str)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn solve-part1 [input]
+  (loop [c 0]
+    (if (= &quot;00000&quot;
+           (-&gt; (str input c)
+               (md5)
+               (subs 0 5)))
+      (str c)
+      (recur (inc c)))))</pre></td></tr><tr><td class="docs"><p>part1 result</p>
+</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day05" name="advent.day05"><h1 class="project-name">advent.day05</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day05)</pre></td></tr><tr><td class="docs"><p>--- Day 5: Doesn't He Have Intern-Elves For This? ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>Santa needs help figuring out which strings in his text file are naughty or
 nice.</p>
@@ -3126,7 +3160,7 @@ between them, like xyx, abcdefeghi (efe), or even aaa.</p>
    (map nice-string?* (clojure.string/split input #&quot;\n&quot;))
    (filter true?)
    (count)))</pre></td></tr><tr><td class="docs"><p>part-2</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/gdeer81/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_advent.core">advent.core</li><li class="floating-toc-li" id="floating-toc_advent.day01">advent.day01</li><li class="floating-toc-li" id="floating-toc_advent.day02">advent.day02</li><li class="floating-toc-li" id="floating-toc_advent.day03">advent.day03</li><li class="floating-toc-li" id="floating-toc_advent.day05">advent.day05</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/gdeer81/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_advent.core">advent.core</li><li class="floating-toc-li" id="floating-toc_advent.day01">advent.day01</li><li class="floating-toc-li" id="floating-toc_advent.day02">advent.day02</li><li class="floating-toc-li" id="floating-toc_advent.day03">advent.day03</li><li class="floating-toc-li" id="floating-toc_advent.day04">advent.day04</li><li class="floating-toc-li" id="floating-toc_advent.day05">advent.day05</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
 SyntaxHighlighter.all();
 
 // hackity hack
