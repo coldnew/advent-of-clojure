@@ -2866,7 +2866,7 @@ net.brehaut.ClojureTools = (function (SH) {
   };
 })(SyntaxHighlighter);
 </script><title>advent -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://github.com/coldnew/advent-of-clojure">advent</a></h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>My solutions to the Advent of Code</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#advent.core">advent.core</a></li><li><a href="#advent.day01">advent.day01</a></li><li><a href="#advent.day02">advent.day02</a></li><li><a href="#advent.day03">advent.day03</a></li><li><a href="#advent.day04">advent.day04</a></li><li><a href="#advent.day05">advent.day05</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.core" name="advent.core"><h1 class="project-name">advent.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0-RC3</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#advent.core">advent.core</a></li><li><a href="#advent.day01">advent.day01</a></li><li><a href="#advent.day02">advent.day02</a></li><li><a href="#advent.day03">advent.day03</a></li><li><a href="#advent.day04">advent.day04</a></li><li><a href="#advent.day05">advent.day05</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.core" name="advent.core"><h1 class="project-name">advent.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.core)</pre></td></tr><tr><td class="docs"><p>I don't do a whole lot.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn foo
   [x]
@@ -2891,24 +2891,24 @@ net.brehaut.ClojureTools = (function (SH) {
   (slurp (clojure.java.io/resource &quot;day01.txt&quot;)))</pre></td></tr><tr><td class="docs"><p>count the result</p>
 </td><td class="codes"><pre class="brush: clojure">(defn solve-part1 [input]
   (reduce + (map { \( 1 \) -1 } input)))</pre></td></tr><tr><td class="docs"><p>part-1</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Now, given the same instructions, find the position of the first character
-that causes him to enter the basement (floor -1). The first character in the
-instructions has position 1, the second character has position 2, and so on.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>) causes him to enter the basement at character position 1.
-()()) causes him to enter the basement at character position 5.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>What is the position of the character that causes Santa to first enter the
-basement?</p>
-</td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn solve-part2 [input]
+</td><td class="codes"><pre class="brush: clojure">#_(solve-part1 data)
+;; --- Part Two ---
+;; Now, given the same instructions, find the position of the first character
+;; that causes him to enter the basement (floor -1). The first character in the
+;; instructions has position 1, the second character has position 2, and so on.
+;; For example:
+;; ) causes him to enter the basement at character position 1.
+;; ()()) causes him to enter the basement at character position 5.
+;; What is the position of the character that causes Santa to first enter the
+;; basement?
+(defn solve-part2 [input]
   (let [data (map {\( 1\) -1} input)]
     (loop [i 0 sum1 0]
       (let [sum (+ sum1 (nth data i))]
         (if (= -1 sum)
           (inc i)                       ; array start in index 0, we add to +1
           (recur (inc i) sum))))))</pre></td></tr><tr><td class="docs"><p>part-2</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day02" name="advent.day02"><h1 class="project-name">advent.day02</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day02" name="advent.day02"><h1 class="project-name">advent.day02</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day02)</pre></td></tr><tr><td class="docs"><p>--- Day 2: I Was Told There Would Be No Math ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>The elves are running low on wrapping paper, and so they need to submit an
 order for more. They have a list of the dimensions (length l, width w, and
@@ -2942,25 +2942,25 @@ wrapping paper should they order?</p>
   (-&gt;&gt;
    (map solve-1 (clojure.string/split input #&quot;\n&quot;))
    (reduce +)))</pre></td></tr><tr><td class="docs"><p>part-1</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>The elves are also running low on ribbon. Ribbon is all the same width, so
-they only have to worry about the length they need to order, which they would
-again like to be exact.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>The ribbon required to wrap a present is the shortest distance around its
-sides, or the smallest perimeter of any one face. Each present also requires
-a bow made out of ribbon as well; the feet of ribbon required for the perfect
-bow is equal to the cubic feet of volume of the present. Don't ask how they
-tie the bow, though; they'll never tell.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>A present with dimensions 2x3x4 requires 2+2+3+3 = 10 feet of ribbon to wrap
-the present plus 2<em>3</em>4 = 24 feet of ribbon for the bow, for a total of 34
-feet.
-A present with dimensions 1x1x10 requires 1+1+1+1 = 4 feet of ribbon to wrap
-the present plus 1<em>1</em>10 = 10 feet of ribbon for the bow, for a total of 14
-feet.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>How many total feet of ribbon should they order?</p>
-</td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn solve-2 [input]
+</td><td class="codes"><pre class="brush: clojure">#_(solve-part1 data)
+;; --- Part Two ---
+;; The elves are also running low on ribbon. Ribbon is all the same width, so
+;; they only have to worry about the length they need to order, which they would
+;; again like to be exact.
+;; The ribbon required to wrap a present is the shortest distance around its
+;; sides, or the smallest perimeter of any one face. Each present also requires
+;; a bow made out of ribbon as well; the feet of ribbon required for the perfect
+;; bow is equal to the cubic feet of volume of the present. Don't ask how they
+;; tie the bow, though; they'll never tell.
+;; For example:
+;; A present with dimensions 2x3x4 requires 2+2+3+3 = 10 feet of ribbon to wrap
+;; the present plus 2*3*4 = 24 feet of ribbon for the bow, for a total of 34
+;; feet.
+;; A present with dimensions 1x1x10 requires 1+1+1+1 = 4 feet of ribbon to wrap
+;; the present plus 1*1*10 = 10 feet of ribbon for the bow, for a total of 14
+;; feet.
+;; How many total feet of ribbon should they order?
+(defn solve-2 [input]
   (let [[l w h] (map #(Integer/parseInt %)
                      (clojure.string/split input #&quot;x&quot;))
         [m1 m2] (sort [l w h])]
@@ -2968,7 +2968,7 @@ feet.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn solve-part2 [input]
   (-&gt;&gt; (map solve-2 (clojure.string/split input #&quot;\n&quot;))
        (reduce +)))</pre></td></tr><tr><td class="docs"><p>part-2</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day03" name="advent.day03"><h1 class="project-name">advent.day03</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day03" name="advent.day03"><h1 class="project-name">advent.day03</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day03)</pre></td></tr><tr><td class="docs"><p>--- Day 3: Perfectly Spherical Houses in a Vacuum ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>Santa is delivering presents to an infinite two-dimensional grid of houses.</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>He begins by delivering a present to the house at his starting location, and
@@ -3001,23 +3001,23 @@ more than once. How many houses receive at least one present?</p>
     (if (= result 1)
       2
       result)))</pre></td></tr><tr><td class="docs"><p>part1 result</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>The next year, to speed up the process, Santa creates a robot version of
-himself, Robo-Santa, to deliver presents with him.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Santa and Robo-Santa start at the same location (delivering two presents to
-the same starting house), then take turns moving based on instructions from
-the elf, who is eggnoggedly reading from the same script as the previous
-year.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>This year, how many houses receive at least one present?</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>^v delivers presents to 3 houses, because Santa goes north, and then
-Robo-Santa goes south.
-^>v&lt; now delivers presents to 3 houses, and Santa and Robo-Santa end up back
-where they started.
-^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction
-and Robo-Santa going the other.</p>
-</td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn moves [input]
+</td><td class="codes"><pre class="brush: clojure">#_(solve-part1 data)
+;; --- Part Two ---
+;; The next year, to speed up the process, Santa creates a robot version of
+;; himself, Robo-Santa, to deliver presents with him.
+;; Santa and Robo-Santa start at the same location (delivering two presents to
+;; the same starting house), then take turns moving based on instructions from
+;; the elf, who is eggnoggedly reading from the same script as the previous
+;; year.
+;; This year, how many houses receive at least one present?
+;; For example:
+;; ^v delivers presents to 3 houses, because Santa goes north, and then
+;; Robo-Santa goes south.
+;; ^&gt;v&lt; now delivers presents to 3 houses, and Santa and Robo-Santa end up back
+;; where they started.
+;; ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction
+;; and Robo-Santa going the other.
+(defn moves [input]
   (-&gt;&gt; (map {\&gt; [1 0] \&lt; [-1 0] \^ [0 1] \v [0 -1]} input)
        (reductions (fn [x y] (map + x y)))))</pre></td></tr><tr><td class="docs"><p>part2 solve function</p>
 </td><td class="codes"><pre class="brush: clojure">(defn solve-2 [input]
@@ -3032,7 +3032,7 @@ and Robo-Santa going the other.</p>
     (if (odd? result)
       result
       (inc result))))</pre></td></tr><tr><td class="docs"><p>part2 result</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day04" name="advent.day04"><h1 class="project-name">advent.day04</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day04" name="advent.day04"><h1 class="project-name">advent.day04</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day04
   (:import [java.security.MessageDigest]))</pre></td></tr><tr><td class="docs"><p>--- Day 4: The Ideal Stocking Stuffer ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>Santa needs help mining some AdventCoins (very similar to bitcoins) to use as
@@ -3066,11 +3066,11 @@ pqrstuv1048970 looks like 000006136ef....</p>
                (subs 0 5)))
       (str c)
       (recur (inc c)))))</pre></td></tr><tr><td class="docs"><p>part1 result</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Now find one that starts with six zeroes.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Your puzzle input is still ckczppom.</p>
-</td><td class="codes"></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn solve-part2 [input]
+</td><td class="codes"><pre class="brush: clojure">#_(solve-part1 data)
+;; --- Part Two ---
+;; Now find one that starts with six zeroes.
+;; Your puzzle input is still ckczppom.
+(defn solve-part2 [input]
   (loop [c 0]
     (if (= &quot;000000&quot;
            (-&gt; (str input c)
@@ -3078,7 +3078,7 @@ pqrstuv1048970 looks like 000006136ef....</p>
                (subs 0 6)))
       (str c)
       (recur (inc c)))))</pre></td></tr><tr><td class="docs"><p>part2 result</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day05" name="advent.day05"><h1 class="project-name">advent.day05</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day05" name="advent.day05"><h1 class="project-name">advent.day05</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day05)</pre></td></tr><tr><td class="docs"><p>--- Day 5: Doesn't He Have Intern-Elves For This? ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>Santa needs help figuring out which strings in his text file are naughty or
 nice.</p>
@@ -3130,37 +3130,37 @@ one of the other requirements.</p>
    (map nice-string? (clojure.string/split input #&quot;\n&quot;))
    (filter true?)
    (count)))</pre></td></tr><tr><td class="docs"><p>part-1</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Realizing the error of his ways, Santa has switched to a better model of
-determining whether a string is naughty or nice. None of the old rules apply,
-as they are all clearly ridiculous.</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>Now, a nice string is one with all of the following properties:</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><pre><code>It contains a pair of any two letters that appears at least twice in the
-string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not
-like aaa (aa, but it overlaps).
-
-It contains at least one letter which repeats with exactly one letter
-between them, like xyx, abcdefeghi (efe), or even aaa.
-</code></pre>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><pre><code>qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj)
-and a letter that repeats with exactly one letter between them (zxz).
-
-xxyxx is nice because it has a pair that appears twice and a letter that
-repeats with one between, even though the letters used by each rule
-overlap.
-
-uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat with
-a single letter between them.
-
-ieodomkazucvgmuy is naughty because it has a repeating letter with one
-between (odo), but no pair that appears twice.
-</code></pre>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>How many strings are nice under these new rules?</p>
-</td><td class="codes"></td></tr><tr><td class="docs"><p>It contains a pair of any two letters that appears at least twice in the
-string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not like
-aaa (aa, but it overlaps).</p>
-</td><td class="codes"><pre class="brush: clojure">(defn rule-1* [s]
+</td><td class="codes"><pre class="brush: clojure">#_(solve-part1 data)
+;; --- Part Two ---
+;; Realizing the error of his ways, Santa has switched to a better model of
+;; determining whether a string is naughty or nice. None of the old rules apply,
+;; as they are all clearly ridiculous.
+;; Now, a nice string is one with all of the following properties:
+;;     It contains a pair of any two letters that appears at least twice in the
+;;     string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not
+;;     like aaa (aa, but it overlaps).
+;;
+;;     It contains at least one letter which repeats with exactly one letter
+;;     between them, like xyx, abcdefeghi (efe), or even aaa.
+;; For example:
+;;     qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj)
+;;     and a letter that repeats with exactly one letter between them (zxz).
+;;
+;;     xxyxx is nice because it has a pair that appears twice and a letter that
+;;     repeats with one between, even though the letters used by each rule
+;;     overlap.
+;;
+;;     uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat with
+;;     a single letter between them.
+;;
+;;     ieodomkazucvgmuy is naughty because it has a repeating letter with one
+;;     between (odo), but no pair that appears twice.
+;;
+;; How many strings are nice under these new rules?
+;; It contains a pair of any two letters that appears at least twice in the
+;; string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not like
+;; aaa (aa, but it overlaps).
+(defn rule-1* [s]
   (boolean (re-find #&quot;([a-z][a-z]).*\1&quot; s)))</pre></td></tr><tr><td class="docs"><p>It contains at least one letter which repeats with exactly one letter
 between them, like xyx, abcdefeghi (efe), or even aaa.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn rule-2* [s]
@@ -3172,7 +3172,7 @@ between them, like xyx, abcdefeghi (efe), or even aaa.</p>
    (map nice-string?* (clojure.string/split input #&quot;\n&quot;))
    (filter true?)
    (count)))</pre></td></tr><tr><td class="docs"><p>part-2</p>
-</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/gdeer81/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_advent.core">advent.core</li><li class="floating-toc-li" id="floating-toc_advent.day01">advent.day01</li><li class="floating-toc-li" id="floating-toc_advent.day02">advent.day02</li><li class="floating-toc-li" id="floating-toc_advent.day03">advent.day03</li><li class="floating-toc-li" id="floating-toc_advent.day04">advent.day04</li><li class="floating-toc-li" id="floating-toc_advent.day05">advent.day05</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
+</td><td class="codes"></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr></table><div class="footer">Generated by <a href="https://github.com/gdeer81/marginalia">Marginalia</a>.&nbsp;&nbsp;Syntax highlighting provided by Alex Gorbatchev's <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a><div id="floating-toc"><ul><li class="floating-toc-li" id="floating-toc_advent.core">advent.core</li><li class="floating-toc-li" id="floating-toc_advent.day01">advent.day01</li><li class="floating-toc-li" id="floating-toc_advent.day02">advent.day02</li><li class="floating-toc-li" id="floating-toc_advent.day03">advent.day03</li><li class="floating-toc-li" id="floating-toc_advent.day04">advent.day04</li><li class="floating-toc-li" id="floating-toc_advent.day05">advent.day05</li></ul></div></div><script type="text/javascript">SyntaxHighlighter.defaults['gutter'] = false;
 SyntaxHighlighter.all();
 
 // hackity hack
