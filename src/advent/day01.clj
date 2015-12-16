@@ -33,7 +33,7 @@
   (reduce + (map { \( 1 \) -1 } input)))
 
 ;; part-1
-(solve-part1 data)
+#_(solve-part1 data)
 
 ;; --- Part Two ---
 
@@ -58,4 +58,4 @@
           (recur (inc i) sum))))))
 
 ;; part-2
-(solve-part2 data)
+#_(solve-part2 data)

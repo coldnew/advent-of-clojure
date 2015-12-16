@@ -44,7 +44,7 @@
    (reduce +)))
 
 ;; part-1
-(solve-part1 data)
+#_(solve-part1 data)
 
 ;; --- Part Two ---
 
@@ -80,4 +80,4 @@
        (reduce +)))
 
 ;; part-2
-(solve-part2 data)
+#_(solve-part2 data)

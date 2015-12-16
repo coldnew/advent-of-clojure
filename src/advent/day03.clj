@@ -40,7 +40,7 @@
       result)))
 
 ;; part1 result
-(solve-part1 data)
+#_(solve-part1 data)
 
 ;; --- Part Two ---
 
@@ -84,4 +84,4 @@
       (inc result))))
 
 ;; part2 result
-(solve-part2 data)
+#_(solve-part2 data)
