@@ -44,7 +44,7 @@
       (recur (inc c)))))
 
 ;; part1 result
-#_(solve-part1 data)
+;; (solve-part1 data)
 
 ;; --- Part Two ---
 
@@ -62,4 +62,4 @@
       (recur (inc c)))))
 
 ;; part2 result
-#_(solve-part2 data)
+;; (solve-part2 data)

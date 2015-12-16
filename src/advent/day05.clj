@@ -68,7 +68,7 @@
    (count)))
 
 ;; part-1
-#_(solve-part1 data)
+;; (solve-part1 data)
 
 ;; --- Part Two ---
 
@@ -126,4 +126,4 @@
    (count)))
 
 ;; part-2
-#_(solve-part2 data)
+;; (solve-part2 data)
