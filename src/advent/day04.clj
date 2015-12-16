@@ -45,3 +45,21 @@
 
 ;; part1 result
 (solve-part1 data)
+
+;; --- Part Two ---
+
+;; Now find one that starts with six zeroes.
+
+;; Your puzzle input is still ckczppom.
+
+(defn solve-part2 [input]
+  (loop [c 0]
+    (if (= "000000"
+           (-> (str input c)
+               (md5)
+               (subs 0 6)))
+      (str c)
+      (recur (inc c)))))
+
+;; part2 result
+(solve-part2 data)
