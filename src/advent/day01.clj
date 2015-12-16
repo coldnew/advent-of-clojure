@@ -29,8 +29,33 @@
   (slurp (clojure.java.io/resource "day01.txt")))
 
 ;; count the result
-(defn solve [input]
+(defn solve-part1 [input]
   (reduce + (map { \( 1 \) -1 } input)))
 
-;; solve this problem
-(solve data)
+;; part-1
+(solve-part1 data)
+
+;; --- Part Two ---
+
+;; Now, given the same instructions, find the position of the first character
+;; that causes him to enter the basement (floor -1). The first character in the
+;; instructions has position 1, the second character has position 2, and so on.
+
+;; For example:
+
+;; ) causes him to enter the basement at character position 1.
+;; ()()) causes him to enter the basement at character position 5.
+
+;; What is the position of the character that causes Santa to first enter the
+;; basement?
+
+(defn solve-part2 [input]
+  (let [data (map {\( 1\) -1} input)]
+    (loop [i 0 sum1 0]
+      (let [sum (+ sum1 (nth data i))]
+        (if (= -1 sum)
+          (inc i)                       ; array start in index 0, we add to +1
+          (recur (inc i) sum))))))
+
+;; part-2
+(solve-part2 data)
