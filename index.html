@@ -2889,9 +2889,26 @@ net.brehaut.ClojureTools = (function (SH) {
 </td><td class="codes"></td></tr><tr><td class="docs"><p>input file save to resource/day01.txt</p>
 </td><td class="codes"><pre class="brush: clojure">(def data
   (slurp (clojure.java.io/resource &quot;day01.txt&quot;)))</pre></td></tr><tr><td class="docs"><p>count the result</p>
-</td><td class="codes"><pre class="brush: clojure">(defn solve [input]
-  (reduce + (map { \( 1 \) -1 } input)))</pre></td></tr><tr><td class="docs"><p>solve this problem</p>
-</td><td class="codes"><pre class="brush: clojure">(solve data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day02" name="advent.day02"><h1 class="project-name">advent.day02</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn solve-part1 [input]
+  (reduce + (map { \( 1 \) -1 } input)))</pre></td></tr><tr><td class="docs"><p>part-1</p>
+</td><td class="codes"><pre class="brush: clojure">(solve-part1 data)</pre></td></tr><tr><td class="docs"><p>--- Part Two ---</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>Now, given the same instructions, find the position of the first character
+that causes him to enter the basement (floor -1). The first character in the
+instructions has position 1, the second character has position 2, and so on.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>For example:</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>) causes him to enter the basement at character position 1.
+()()) causes him to enter the basement at character position 5.</p>
+</td><td class="codes"></td></tr><tr><td class="docs"><p>What is the position of the character that causes Santa to first enter the
+basement?</p>
+</td><td class="codes"></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn solve-part2 [input]
+  (let [data (map {\( 1\) -1} input)]
+    (loop [i 0 sum1 0]
+      (let [sum (+ sum1 (nth data i))]
+        (if (= -1 sum)
+          (inc i)                       ; array start in index 0, we add to +1
+          (recur (inc i) sum))))))</pre></td></tr><tr><td class="docs"><p>part-2</p>
+</td><td class="codes"><pre class="brush: clojure">(solve-part2 data)</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#advent.day02" name="advent.day02"><h1 class="project-name">advent.day02</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns advent.day02)</pre></td></tr><tr><td class="docs"><p>--- Day 2: I Was Told There Would Be No Math ---</p>
 </td><td class="codes"></td></tr><tr><td class="docs"><p>The elves are running low on wrapping paper, and so they need to submit an
 order for more. They have a list of the dimensions (length l, width w, and
