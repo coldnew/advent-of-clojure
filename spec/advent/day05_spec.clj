@@ -14,3 +14,14 @@
  (verify-part1 "jchzalrnumimnmhp" 0)
  (verify-part1 "haegwjzuvuyypxyu" 0)
  (verify-part1 "dvszwmarrgswjxmb" 0))
+
+(defn verify-part2 [test result]
+  (it (str test " is " result)
+      (should (= result (solve-part2 test)))))
+
+(describe
+ "Testcase in examples: day05 part2"
+ (verify-part2 "qjhvhtzxzqqjkmpb" 1)
+ (verify-part2 "xxyxx"            1)
+ (verify-part2 "uurcxstgmygtbstg" 0)
+ (verify-part2 "ieodomkazucvgmuy" 0))
