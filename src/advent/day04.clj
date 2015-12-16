@@ -43,7 +43,6 @@
       (str c)
       (recur (inc c)))))
 
-;; part1 result
 ;; (solve-part1 data)
 
 ;; --- Part Two ---
@@ -61,5 +60,4 @@
       (str c)
       (recur (inc c)))))
 
-;; part2 result
 ;; (solve-part2 data)

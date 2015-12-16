@@ -32,7 +32,6 @@
 (defn solve-part1 [input]
   (reduce + (map { \( 1 \) -1 } input)))
 
-;; part-1
 ;; (solve-part1 data)
 
 ;; --- Part Two ---
@@ -57,5 +56,4 @@
           (inc i)                       ; array start in index 0, we add to +1
           (recur (inc i) sum))))))
 
-;; part-2
 ;; (solve-part2 data)

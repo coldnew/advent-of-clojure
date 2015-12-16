@@ -39,7 +39,6 @@
       2
       result)))
 
-;; part1 result
 ;; (solve-part1 data)
 
 ;; --- Part Two ---
@@ -83,5 +82,4 @@
       result
       (inc result))))
 
-;; part2 result
 ;; (solve-part2 data)

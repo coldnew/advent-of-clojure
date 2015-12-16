@@ -43,7 +43,6 @@
    (map solve-1 (clojure.string/split input #"\n"))
    (reduce +)))
 
-;; part-1
 ;; (solve-part1 data)
 
 ;; --- Part Two ---
@@ -79,5 +78,4 @@
   (->> (map solve-2 (clojure.string/split input #"\n"))
        (reduce +)))
 
-;; part-2
 ;; (solve-part2 data)

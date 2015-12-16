@@ -67,7 +67,6 @@
    (filter true?)
    (count)))
 
-;; part-1
 ;; (solve-part1 data)
 
 ;; --- Part Two ---
@@ -125,5 +124,4 @@
    (filter true?)
    (count)))
 
-;; part-2
 ;; (solve-part2 data)
